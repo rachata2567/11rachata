@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar  color="success">
+    <ion-button slot="end" color="success" (click)="gotoaddproduct()">เพิ่มสินค้า</ion-button>
+    <ion-title color="dark">แสดงสินค้า</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+
+
+  
+  <ion-card  *ngFor="let pro of products">
+    <ion-card-header>
+      <ion-card-title>สินค้า</ion-card-title>
+      <ion-card-subtitle>สินค้าทั้งหมดของร้าน</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>    <ion-label>    <ion-thumbnail slot="start">
+          <img [src]="'http://localhost/crudimg/' + pro.image" />
+        </ion-thumbnail></ion-label>
+      </ion-item>        <ion-item> 
+          <ion-label>
+            <h2>ชื่อ:  {{pro.name}}</h2>
+            <p>ราคา: {{pro.price}} บาท</p>
+          </ion-label> </ion-item>  
+      <ion-button (click)="editProduct(pro)" color="success">แก้ไข</ion-button>
+          <ion-button  (click)="deletepro(pro.id)" color="danger">ลบ</ion-button>
+         
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
